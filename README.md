@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm install`
+
+Install all dependencies.
+
 ### `yarn start`
 
 Runs the app in the development mode.<br />
@@ -29,7 +33,11 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `yarn lint`
 
+Lints the files under src folder.
 
+### `yarn prettier`
+
+Prettifies the files under src folder.
 
 ### `yarn eject`
 
