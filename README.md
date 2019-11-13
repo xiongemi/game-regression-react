@@ -1,6 +1,14 @@
+# Game Regression React
+
 This project is an example project for learning React.
 
 It is inspired by https://github.com/rangle/game-progression.
+
+## To Start
+
+- Create your own React project in GitHub using [Create React App](https://github.com/facebook/create-react-app)
+- Copy db.json and the profile image in the src/assets folder over to your project
+- Implement user stories from https://github.com/rangle/game-progression/tree/master/docs/user-stories.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -8,7 +16,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm install`
+### `yarn install`
 
 Install all dependencies.
 

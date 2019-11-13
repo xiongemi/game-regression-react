@@ -1,16 +1,36 @@
 import React from 'react';
+import { Redirect, Route, Switch } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import { ConnectedHeader } from './header/header.container';
+import { Menu } from './menu/Menu';
+import { Dashboard } from './dashboard/Dashboard';
+import { rootStore } from './store/root-store';
+
 import './App.css';
-import { AppBar, Button, Toolbar, Typography } from '@material-ui/core';
 
-const App: React.FC = () => {
-  return (
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6">Game Progression</Typography>
-        <Button color="inherit">Login</Button>
-      </Toolbar>
-    </AppBar>
-  );
-};
+export class App extends React.Component {
+  render(): React.ReactNode {
+    return (
+      <Provider store={rootStore}>
+        <ConnectedHeader />
+        <Menu></Menu>
 
-export default App;
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/">
+              <Dashboard />
+            </Route>
+            <Route path="/dashboard">
+              <Redirect to="/" />
+            </Route>
+            <Route path="*">
+              <Redirect to="/" />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </Provider>
+    );
+  }
+}
