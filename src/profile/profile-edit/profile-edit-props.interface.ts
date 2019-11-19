@@ -1,0 +1,6 @@
+import { Profile } from '../types/profile.interface';
+
+export interface ProfileEditProps {
+  profile: Profile | null;
+  editProfile: (profile: Profile) => void;
+}

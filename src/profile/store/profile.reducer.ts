@@ -1,11 +1,18 @@
-import { AnyAction } from 'redux';
+import { AnyAction, combineReducers } from 'redux';
 
-import { ProfileState } from '../types/profile-state.interface';
 import { Profile } from '../types/profile.interface';
+import { ApiStatus } from '../../types/api-status.enum';
 
-import { FETCH_PROFILE_SUCCESS } from './profile.actions';
+import {
+  EDIT_PROFILE,
+  EDIT_PROFILE_FAILED,
+  EDIT_PROFILE_SUCCESS,
+  FETCH_PROFILE,
+  FETCH_PROFILE_FAILED,
+  FETCH_PROFILE_SUCCESS,
+} from './profile.actions';
 
-export function profile(state: ProfileState = null, action: AnyAction): ProfileState {
+export function profile(state: Profile | null = null, action: AnyAction): Profile | null {
   switch (action.type) {
     case FETCH_PROFILE_SUCCESS:
       return action.profile as Profile;
@@ -13,3 +20,53 @@ export function profile(state: ProfileState = null, action: AnyAction): ProfileS
       return state;
   }
 }
+
+export function fetchStatus(state: ApiStatus = ApiStatus.notStarted, action: AnyAction): ApiStatus {
+  switch (action.type) {
+    case FETCH_PROFILE:
+      return ApiStatus.pending;
+    case FETCH_PROFILE_FAILED:
+    case FETCH_PROFILE_SUCCESS:
+      return ApiStatus.complete;
+    default:
+      return state;
+  }
+}
+
+export function fetchError(state: any = null, action: AnyAction): any {
+  switch (action.type) {
+    case FETCH_PROFILE_FAILED:
+      return action.error;
+    default:
+      return state;
+  }
+}
+
+export function editStatus(state: ApiStatus = ApiStatus.notStarted, action: AnyAction): ApiStatus {
+  switch (action.type) {
+    case EDIT_PROFILE:
+      return ApiStatus.pending;
+    case EDIT_PROFILE_SUCCESS:
+    case EDIT_PROFILE_FAILED:
+      return ApiStatus.complete;
+    default:
+      return state;
+  }
+}
+
+export function editError(state: any = null, action: AnyAction): any {
+  switch (action.type) {
+    case EDIT_PROFILE_FAILED:
+      return action.error;
+    default:
+      return state;
+  }
+}
+
+export const profileReducer = combineReducers({
+  profile,
+  fetchStatus,
+  fetchError,
+  editStatus,
+  editError,
+});

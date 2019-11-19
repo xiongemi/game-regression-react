@@ -7,22 +7,24 @@ import { ConnectedHeader } from './header/header.container';
 import { Menu } from './menu/Menu';
 import { Dashboard } from './dashboard/Dashboard';
 import { rootStore } from './store/root-store';
+import { Routes } from './types/routes.enum';
+import { ProfileRouter } from './profile/ProfileRouter';
 
+import './i18n';
 import './App.css';
 
 export class App extends React.Component {
   render(): React.ReactNode {
     return (
       <Provider store={rootStore}>
-        <ConnectedHeader />
-        <Menu></Menu>
-
         <BrowserRouter>
+          <ConnectedHeader />
+          <Menu />
+
           <Switch>
-            <Route exact path="/">
-              <Dashboard />
-            </Route>
-            <Route path="/dashboard">
+            <Route exact path="/" component={Dashboard} />
+            <Route path={Routes.profile} component={ProfileRouter} />
+            <Route path={Routes.dashboard}>
               <Redirect to="/" />
             </Route>
             <Route path="*">

@@ -20,6 +20,8 @@ In package.json, I modified the `start` script:
 "start:server": "json-server --watch src/assets/db.json --port 3004",
 ```
 
+Now when I run ````
+
 ## Boilerplate
 
 The first thing I need to do is to create the app using [Create React App](https://github.com/facebook/create-react-app) and install all the NPM libraries I need, such as:

@@ -2,14 +2,14 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { fetchProfile } from '../profile/store/profile.actions';
-import { profileState } from '../profile/store/profile.selectors';
+import { getProfile } from '../profile/store/profile.selectors';
 import { RootState } from '../store/root-state.interface';
 
 import { Header } from './Header';
 
 function mapStateToProps(state: RootState) {
   return {
-    profile: profileState(state),
+    profile: getProfile(state),
   };
 }
 
