@@ -28,3 +28,9 @@ export const isEditProfileSaved: Selector<RootState, boolean> = createSelector(
   getEditProfileError,
   (apiStatus: ApiStatus, error: any) => apiStatus === ApiStatus.complete && !error,
 );
+
+export const hasEditProfileFailed: Selector<RootState, boolean> = createSelector(
+  getEditProfileApiStatus,
+  getEditProfileError,
+  (apiStatus: ApiStatus, error: any) => apiStatus === ApiStatus.complete && !!error,
+);

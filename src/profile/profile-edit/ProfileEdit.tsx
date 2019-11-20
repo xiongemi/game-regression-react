@@ -15,6 +15,7 @@ export class ProfileEdit extends React.Component<ProfileEditProps & RouteCompone
         isPending={this.props.isPending}
         history={this.props.history}
         isSaved={this.props.isSaved}
+        hasFailed={this.props.hasFailed}
       />
     ) : (
       <CircularProgress />

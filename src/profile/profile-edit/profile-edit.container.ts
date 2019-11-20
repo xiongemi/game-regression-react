@@ -1,7 +1,12 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { getProfile, isEditProfilePending, isEditProfileSaved } from '../store/profile.selectors';
+import {
+  getProfile,
+  hasEditProfileFailed,
+  isEditProfilePending,
+  isEditProfileSaved,
+} from '../store/profile.selectors';
 import { RootState } from '../../store/root-state.interface';
 import { editProfile, resetEditProfileStatus } from '../store/profile.actions';
 import { Profile } from '../types/profile.interface';
@@ -13,6 +18,7 @@ function mapStateToProps(state: RootState) {
     profile: getProfile(state),
     isPending: isEditProfilePending(state),
     isSaved: isEditProfileSaved(state),
+    hasFailed: hasEditProfileFailed(state),
   };
 }
 

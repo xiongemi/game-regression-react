@@ -8,5 +8,6 @@ export interface ProfileEditProps {
   resetStatus: () => void;
   isPending: boolean;
   isSaved: boolean;
+  hasFailed: boolean;
   history: H.History;
 }

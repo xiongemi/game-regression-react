@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { AnyAction } from 'redux';
 
-import { apiUrl } from '../../types/url.const';
+import { ApiUrls } from '../../types/api-urls.const';
 
 import {
   EDIT_PROFILE,
@@ -14,7 +14,7 @@ import {
 
 function* fetchProfile() {
   try {
-    const response = yield call(fetch, apiUrl + '/profile', {
+    const response = yield call(fetch, ApiUrls.profile, {
       method: 'GET',
     });
     const profile = yield response.json();
@@ -26,7 +26,7 @@ function* fetchProfile() {
 
 function* editProfile(action: AnyAction) {
   try {
-    const response = yield call(fetch, apiUrl + '/profile', {
+    const response = yield call(fetch, ApiUrls.profile, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

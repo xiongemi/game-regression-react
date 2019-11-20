@@ -3,7 +3,8 @@
     "translation": {
       "alphabetError": "Only alphabet characters",
       "requiredError": "Field is required",
-      "greaterThan0Error": "Must be a number >= 0"
+      "greaterThan0Error": "Must be a number >= 0",
+      "editProfileFailed": "Failed to edit profile, please try again."
     }
   }
 }
