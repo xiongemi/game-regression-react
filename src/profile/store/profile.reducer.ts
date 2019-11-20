@@ -10,12 +10,15 @@ import {
   FETCH_PROFILE,
   FETCH_PROFILE_FAILED,
   FETCH_PROFILE_SUCCESS,
+  RESET_EDIT_PROFILE_STATUS,
 } from './profile.actions';
 
 export function profile(state: Profile | null = null, action: AnyAction): Profile | null {
   switch (action.type) {
     case FETCH_PROFILE_SUCCESS:
-      return action.profile as Profile;
+      return action.profile;
+    case EDIT_PROFILE_SUCCESS:
+      return action.profile;
     default:
       return state;
   }
@@ -49,6 +52,8 @@ export function editStatus(state: ApiStatus = ApiStatus.notStarted, action: AnyA
     case EDIT_PROFILE_SUCCESS:
     case EDIT_PROFILE_FAILED:
       return ApiStatus.complete;
+    case RESET_EDIT_PROFILE_STATUS:
+      return ApiStatus.notStarted;
     default:
       return state;
   }

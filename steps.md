@@ -20,7 +20,7 @@ In package.json, I modified the `start` script:
 "start:server": "json-server --watch src/assets/db.json --port 3004",
 ```
 
-Now when I run ````
+Now when I run `yarn start`, it will start the server and app at the same time.
 
 ## Boilerplate
 
@@ -29,8 +29,9 @@ The first thing I need to do is to create the app using [Create React App](https
 * redux-related (redux, redux-logger)
 * router (react-router-dom)
 * component-library (@material-ui/core) (Note: this is optional, you may choose to not use a component library)
+* css library (tachyons) (Note: this is also optional)
 
-### Optional: Setup Linting
+## Optional: Setup Linting
 I added scripts for lint in package.json for linting.
 ```
 "lint": "eslint './src/**/*.{ts,tsx}'",
@@ -38,7 +39,31 @@ I added scripts for lint in package.json for linting.
 ```
 One for just output the lint error, the other one is for automatically fixing it.
 
-Then I added 
+## Routing
+I use the library `react-router-dom` to setup routing. 
 
+### Nested Routes
+This app requires nested routes. 
+For example, `/profile` leads to the profile page and `/profile/edit` leads to profile edit page.
 
+So in the App.tsx, the routing looks like:
+```
+<Route path={Routes.profile} component={ProfileRouter} />
+```
 
+In `ProfileRouter` component, this routing looks like:
+```
+<Route exact path={this.props.match.path} component={ConnectedProfile} />
+<Route path={`${this.props.match.path}/edit`} component={ConnectedProfileEdit} />
+```
+
+### Redirect
+There is a requirement that dashboard and unknown routes should go to `/`, so in App.tsx, there are routings:
+```
+<Route path={Routes.dashboard}>
+  <Redirect to="/" />
+</Route>
+<Route path="*">
+  <Redirect to="/" />
+</Route>
+```

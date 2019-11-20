@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Paper, TextField, Typography } from '@material-ui/core';
+import { Button, CircularProgress, Paper, TextField, Typography } from '@material-ui/core';
 import { FormikProps } from 'formik';
 import { Translation } from 'react-i18next';
 
@@ -12,6 +12,17 @@ import { ProfileEditFormValues } from './profile-edit-form-values.interface';
 export class ProfileEditForm extends React.Component<
   ProfileEditProps & FormikProps<ProfileEditFormValues>
 > {
+  componentDidMount(): void {
+    this.props.resetStatus();
+  }
+
+  componentDidUpdate() {
+    if (this.props.isSaved) {
+      this.props.history.push(Routes.profile);
+      this.props.setSubmitting(false);
+    }
+  }
+
   render(): React.ReactNode {
     return (
       <Translation>
@@ -20,13 +31,14 @@ export class ProfileEditForm extends React.Component<
             <Paper className="ma3 pa3 flex justify-between" elevation={3}>
               <Typography variant="h6">Edit My Profile</Typography>
               <div>
-                <Button type="submit" variant="contained">
+                <Button type="submit" variant="contained" disabled={this.props.isPending}>
                   Save
+                  {this.props.isPending && <CircularProgress size={20} />}
                 </Button>
                 <Button
                   variant="contained"
-                  className="ml2"
                   component={createRouterLinkForward(Routes.profile)}
+                  disabled={this.props.isPending}
                 >
                   Cancel
                 </Button>
@@ -44,6 +56,7 @@ export class ProfileEditForm extends React.Component<
                 onBlur={this.props.handleBlur}
                 error={Boolean(this.props.errors.firstName)}
                 helperText={this.props.errors.firstName && t(this.props.errors.firstName)}
+                disabled={this.props.isPending}
               />
 
               <TextField
@@ -56,6 +69,7 @@ export class ProfileEditForm extends React.Component<
                 onBlur={this.props.handleBlur}
                 error={Boolean(this.props.errors.lastName)}
                 helperText={this.props.errors.lastName && t(this.props.errors.lastName)}
+                disabled={this.props.isPending}
               />
 
               <TextField
@@ -68,6 +82,7 @@ export class ProfileEditForm extends React.Component<
                 onBlur={this.props.handleBlur}
                 error={Boolean(this.props.errors.imageUrl)}
                 helperText={this.props.errors.imageUrl && t(this.props.errors.imageUrl)}
+                disabled={this.props.isPending}
               />
 
               <TextField
@@ -83,6 +98,7 @@ export class ProfileEditForm extends React.Component<
                 helperText={
                   this.props.errors.averageHoursPerDay && t(this.props.errors.averageHoursPerDay)
                 }
+                disabled={this.props.isPending}
               />
             </Paper>
           </form>

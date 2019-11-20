@@ -11,7 +11,6 @@ import { Routes } from './types/routes.enum';
 import { ProfileRouter } from './profile/ProfileRouter';
 
 import './i18n';
-import './App.css';
 
 export class App extends React.Component {
   render(): React.ReactNode {

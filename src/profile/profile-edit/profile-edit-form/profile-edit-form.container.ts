@@ -1,8 +1,10 @@
 import { withFormik } from 'formik';
+import { equals } from 'ramda';
 
 import { cleanUpJson } from '../../../shared/clean-up-json.util';
 import { ProfileEditProps } from '../profile-edit-props.interface';
 import { Profile } from '../../types/profile.interface';
+import { Routes } from '../../../types/routes.enum';
 
 import { ProfileEditForm } from './ProfileEditForm';
 import { ProfileEditFormValues } from './profile-edit-form-values.interface';
@@ -52,8 +54,13 @@ export const ProfileEditFormik = withFormik({
       languageId: props.profile && props.profile.languageId,
     } as Profile;
 
-    props.editProfile(profile);
-    setSubmitting(true);
+    if (equals(profile, props.profile)) {
+      props.history.push(Routes.profile);
+      setSubmitting(false);
+    } else {
+      props.editProfile(profile);
+      setSubmitting(true);
+    }
   },
 
   displayName: 'EditProfileForm',

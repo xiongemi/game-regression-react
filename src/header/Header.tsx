@@ -5,6 +5,7 @@ import profilePicture from '../assets/profile-picture.jpg';
 import { createRouterLinkForward } from '../shared/create-router-link-forward.util';
 
 import { HeaderProps } from './header-props.interface';
+import { Routes } from '../types/routes.enum';
 
 export class Header extends React.Component<HeaderProps> {
   componentDidMount(): void {
@@ -17,9 +18,9 @@ export class Header extends React.Component<HeaderProps> {
         <Toolbar className="justify-between">
           <Typography variant="h6">Game Progression</Typography>
           {this.props.profile && (
-            <Link color="secondary" component={createRouterLinkForward('/profile')}>
+            <Link color="inherit" component={createRouterLinkForward(Routes.profile)} className="flex items-center">
               <Avatar alt="profile image" src={profilePicture} />
-              {this.props.profile.firstName} {this.props.profile.lastName}
+              <span className="ml2">{this.props.profile.firstName} {this.props.profile.lastName}</span>
             </Link>
           )}
         </Toolbar>

@@ -1,10 +1,10 @@
 import React from 'react';
-import { match, Route, Switch } from 'react-router';
+import { Route, RouteComponentProps, Switch } from 'react-router';
 
 import { ConnectedProfile } from './profile.container';
 import { ConnectedProfileEdit } from './profile-edit/profile-edit.container';
 
-export class ProfileRouter extends React.Component<{ match: match }> {
+export class ProfileRouter extends React.Component<RouteComponentProps> {
   render(): React.ReactNode {
     return (
       <Switch>
