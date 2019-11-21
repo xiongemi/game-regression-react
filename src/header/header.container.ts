@@ -19,4 +19,4 @@ function mapDispatchToProps(dispatch: Dispatch) {
   };
 }
 
-export const ConnectedHeader: any = connect(mapStateToProps, mapDispatchToProps)(Header);
+export const HeaderContainer: any = connect(mapStateToProps, mapDispatchToProps)(Header);

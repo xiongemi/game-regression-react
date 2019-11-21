@@ -1,10 +1,25 @@
 {
   "en": {
     "translation": {
+      "title": "Game Regression",
       "alphabetError": "Only alphabet characters",
       "requiredError": "Field is required",
       "greaterThan0Error": "Must be a number >= 0",
-      "editProfileFailed": "Failed to edit profile, please try again."
+      "editProfileFailed": "Failed to edit profile, please try again.",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "avatarImageUrl": "Avatar Image Url",
+      "averageNumberOfHoursPerDay": "Average Number Of Hours Per Day",
+      "name": "Name",
+      "myProfile": "My Profile",
+      "editMyProfile": "Edit My Profile",
+      "yourDashboard": "Your Dashboard",
+      "timeRemaining": "Time Remaining",
+      "days": "Days",
+      "numberOfUnfinishedGames": "Number of Unfinished Games",
+      "numberOfFinishedGames": "Number of Finished Games",
+      "dashboard": "Dashboard",
+      "games": "Games"
     }
   }
 }

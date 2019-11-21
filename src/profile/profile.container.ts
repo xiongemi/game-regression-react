@@ -1,5 +1,5 @@
-import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { withTranslation } from 'react-i18next';
 
 import { RootState } from '../store/root-state.interface';
 
@@ -12,8 +12,6 @@ function mapStateToProps(state: RootState) {
   };
 }
 
-function mapDispatchToProps(dispatch: Dispatch) {
-  return {};
-}
+export const ConnectedProfile: any = connect(mapStateToProps)(Profile);
 
-export const ConnectedProfile: any = connect(mapStateToProps, mapDispatchToProps)(Profile);
+export const ProfileContainer = withTranslation()(ConnectedProfile);

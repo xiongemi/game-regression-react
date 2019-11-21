@@ -2,37 +2,53 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
-import { ConnectedHeader } from './header/header.container';
-import { Menu } from './menu/Menu';
+import { CenteredCircularProgress } from './shared/CenteredCircularProgress';
+import { HeaderContainer } from './header/header.container';
+import { MenuContainer } from './menu/menu-container';
 import { rootStore } from './store/root-store';
 import { Routes } from './types/routes.enum';
 
 import './i18n';
-import { CircularProgress } from '@material-ui/core';
 
-const Dashboard = React.lazy(() => import('./dashboard/Dashboard'));
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#9dafbd',
+      contrastText: '#1e2e3b',
+    },
+    secondary: {
+      main: '#1e2e3b',
+      contrastText: '#d6dbdf',
+    },
+  },
+});
+
+const Dashboard = React.lazy(() => import('./dashboard/dashboard-container'));
 const Profile = React.lazy(() => import('./profile/ProfileRouter'));
 
 export class App extends React.Component {
   render(): React.ReactNode {
     return (
-      <React.Suspense fallback={<CircularProgress />}>
+      <React.Suspense fallback={<CenteredCircularProgress />}>
         <Provider store={rootStore}>
           <BrowserRouter>
-            <ConnectedHeader />
-            <Menu />
+            <ThemeProvider theme={theme}>
+              <HeaderContainer />
+              <MenuContainer />
 
-            <Switch>
-              <Route exact path="/" component={Dashboard} />
-              <Route path={Routes.profile} component={Profile} />
-              <Route path={Routes.dashboard}>
-                <Redirect to="/" />
-              </Route>
-              <Route path="*">
-                <Redirect to="/" />
-              </Route>
-            </Switch>
+              <Switch>
+                <Route exact path="/" component={Dashboard} />
+                <Route path={Routes.profile} component={Profile} />
+                <Route path={Routes.dashboard}>
+                  <Redirect to="/" />
+                </Route>
+                <Route path="*">
+                  <Redirect to="/" />
+                </Route>
+              </Switch>
+            </ThemeProvider>
           </BrowserRouter>
         </Provider>
       </React.Suspense>

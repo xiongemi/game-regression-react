@@ -29,6 +29,7 @@ export function fetchStatus(state: ApiStatus = ApiStatus.notStarted, action: Any
     case FETCH_PROFILE:
       return ApiStatus.pending;
     case FETCH_PROFILE_FAILED:
+      return ApiStatus.error;
     case FETCH_PROFILE_SUCCESS:
       return ApiStatus.complete;
     default:
@@ -40,6 +41,9 @@ export function fetchError(state: any = null, action: AnyAction): any {
   switch (action.type) {
     case FETCH_PROFILE_FAILED:
       return action.error;
+    case FETCH_PROFILE:
+    case FETCH_PROFILE_SUCCESS:
+      return null;
     default:
       return state;
   }
@@ -49,8 +53,9 @@ export function editStatus(state: ApiStatus = ApiStatus.notStarted, action: AnyA
   switch (action.type) {
     case EDIT_PROFILE:
       return ApiStatus.pending;
-    case EDIT_PROFILE_SUCCESS:
     case EDIT_PROFILE_FAILED:
+      return ApiStatus.error;
+    case EDIT_PROFILE_SUCCESS:
       return ApiStatus.complete;
     case RESET_EDIT_PROFILE_STATUS:
       return ApiStatus.notStarted;
@@ -63,6 +68,9 @@ export function editError(state: any = null, action: AnyAction): any {
   switch (action.type) {
     case EDIT_PROFILE_FAILED:
       return action.error;
+    case EDIT_PROFILE:
+    case EDIT_PROFILE_SUCCESS:
+      return null;
     default:
       return state;
   }

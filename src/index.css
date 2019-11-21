@@ -1,6 +1,9 @@
 @import "~tachyons/src/_flexbox.css";
 @import "~tachyons/src/_spacing.css";
 @import "~tachyons/src/_font-weight.css";
+@import "~tachyons/src/_text-align.css";
+@import "~tachyons/src/_type-scale.css";
+
 
 body {
   margin: 0;
@@ -14,4 +17,35 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+:root {
+  --dark-blue: #1e2e3b;
+  --blue: #30495f;
+  --light-blue: #9dafbd;
+  --light-text: #d6dbdf;
+  --dark-text: #1e2e3b;
+  --placeholder-text: #6c6c6c;
+  --menu-highlight: #405e78;
+  --green: #76b43f;
+  --light-green: #a8ce87;
+  --red: #b43f3f;
+  --light-red: #c99898;
+  --orange: #b48c3f;
+}
+
+.bg-blue {
+  background-color: var(--blue);
+}
+
+.bg-light-blue {
+  background-color: var(--light-blue);
+}
+
+.text-light {
+  color: var(--light-text);
+}
+
+.text-dark {
+  color: var(--)
 }

@@ -14,7 +14,7 @@ export class Header extends React.Component<HeaderProps> {
 
   render(): React.ReactNode {
     return (
-      <AppBar position="static">
+      <AppBar position="static" color="secondary">
         <Toolbar className="justify-between">
           <Typography variant="h6">Game Progression</Typography>
           {this.props.profile && (

@@ -1,6 +1,7 @@
 import React from 'react';
-import { CircularProgress } from '@material-ui/core';
 import { RouteComponentProps } from 'react-router';
+
+import { CenteredCircularProgress } from '../../shared/CenteredCircularProgress';
 
 import { ProfileEditFormik } from './profile-edit-form/profile-edit-form.container';
 import { ProfileEditProps } from './profile-edit-props.interface';
@@ -18,7 +19,7 @@ export class ProfileEdit extends React.Component<ProfileEditProps & RouteCompone
         hasFailed={this.props.hasFailed}
       />
     ) : (
-      <CircularProgress />
+      <CenteredCircularProgress />
     );
   }
 }

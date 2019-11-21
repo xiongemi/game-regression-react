@@ -56,14 +56,20 @@ export class ProfileEditForm extends React.Component<
           <React.Fragment>
             <form onSubmit={this.props.handleSubmit}>
               <Paper className="ma3 pa3 flex justify-between" elevation={3}>
-                <Typography variant="h6">Edit My Profile</Typography>
+                <Typography variant="h6">{t('editMyProfile')}</Typography>
                 <div>
-                  <Button type="submit" variant="contained" disabled={this.props.isPending}>
+                  <Button
+                    type="submit"
+                    color="primary"
+                    variant="contained"
+                    disabled={this.props.isPending}
+                  >
                     Save
                     {this.props.isPending && <CircularProgress size={20} />}
                   </Button>
                   <Button
                     variant="contained"
+                    color="primary"
                     component={createRouterLinkForward(Routes.profile)}
                     disabled={this.props.isPending}
                   >
@@ -75,7 +81,7 @@ export class ProfileEditForm extends React.Component<
               <Paper className="ma3 pa3" elevation={3}>
                 <TextField
                   fullWidth
-                  label="First Name:"
+                  label={`${t('firstName')}:`}
                   margin="normal"
                   name="firstName"
                   value={this.props.values.firstName}
@@ -88,7 +94,7 @@ export class ProfileEditForm extends React.Component<
 
                 <TextField
                   fullWidth
-                  label="Last Name:"
+                  label={`${t('lastName')}:`}
                   margin="normal"
                   name="lastName"
                   value={this.props.values.lastName}
@@ -101,7 +107,7 @@ export class ProfileEditForm extends React.Component<
 
                 <TextField
                   fullWidth
-                  label="Avatar Image Url:"
+                  label={`${t('avatarImageUrl')}:`}
                   margin="normal"
                   name="imageUrl"
                   value={this.props.values.imageUrl}
@@ -114,7 +120,7 @@ export class ProfileEditForm extends React.Component<
 
                 <TextField
                   fullWidth
-                  label="Average Number Of Hours Per Day:"
+                  label={`${t('averageNumberOfHoursPerDay')}:`}
                   type="number"
                   margin="normal"
                   name="averageHoursPerDay"

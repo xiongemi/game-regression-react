@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, CircularProgress, Paper, Typography } from '@material-ui/core';
+import { Button, Paper, Typography } from '@material-ui/core';
 
 import { createRouterLinkForward } from '../shared/create-router-link-forward.util';
 import { Routes } from '../types/routes.enum';
+import { CenteredCircularProgress } from '../shared/CenteredCircularProgress';
 
 import { ProfileProps } from './profile-props.interface';
 
@@ -11,27 +12,31 @@ export class Profile extends React.Component<ProfileProps> {
     return this.props.profile ? (
       <React.Fragment>
         <Paper className="ma3 pa3 flex justify-between" elevation={3}>
-          <Typography variant="h6">My Profile</Typography>
-          <Button variant="contained" component={createRouterLinkForward(Routes.profileEdit)}>
+          <Typography variant="h6">{this.props.t('myProfile')}</Typography>
+          <Button
+            variant="contained"
+            color="primary"
+            component={createRouterLinkForward(Routes.profileEdit)}
+          >
             Edit
           </Button>
         </Paper>
 
         <Paper className="ma3 pa3" elevation={3}>
-          <div className="b">Name:</div>
+          <div className="b">{this.props.t('name')}:</div>
           <Typography variant="body1">
             {this.props.profile.firstName} {this.props.profile.lastName}
           </Typography>
 
-          <div className="b mt2">Avatar Image Url:</div>
+          <div className="b mt2">{this.props.t('avatarImageUrl')}:</div>
           <Typography variant="body1">{this.props.profile.image}</Typography>
 
-          <div className="b mt2">Average Number Of Hours Per Day:</div>
+          <div className="b mt2">{this.props.t('averageNumberOfHoursPerDay')}:</div>
           <Typography variant="body1">{this.props.profile.averageNumberOfHoursPerDay}</Typography>
         </Paper>
       </React.Fragment>
     ) : (
-      <CircularProgress />
+      <CenteredCircularProgress />
     );
   }
 }
