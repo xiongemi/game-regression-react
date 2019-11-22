@@ -19,7 +19,10 @@
       "numberOfUnfinishedGames": "Number of Unfinished Games",
       "numberOfFinishedGames": "Number of Finished Games",
       "dashboard": "Dashboard",
-      "games": "Games"
+      "games": "Games",
+      "gamesOwned": "Games Owned",
+      "estCompleted": "Est. % Completed",
+      "completionDate": "Completion Date"
     }
   }
 }

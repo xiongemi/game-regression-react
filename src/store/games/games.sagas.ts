@@ -2,8 +2,8 @@ import { call, put, takeLatest, select } from 'redux-saga/effects';
 
 import { ApiUrls } from '../../types/api-urls.const';
 
-import { FETCH_GAMES, fetchGamesFailed, fetchGamesSuccess } from './game.actions';
-import { getGames } from './game.selectors';
+import { FETCH_GAMES, fetchGamesFailed, fetchGamesSuccess } from './games.actions';
+import { getGames } from './games.selectors';
 
 function* fetchGames() {
   try {
@@ -22,6 +22,6 @@ function* fetchGames() {
   }
 }
 
-export function* gameSagas() {
+export function* gamesSagas() {
   yield takeLatest(FETCH_GAMES, fetchGames);
 }

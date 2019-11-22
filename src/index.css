@@ -1,9 +1,4 @@
-@import "~tachyons/src/_flexbox.css";
-@import "~tachyons/src/_spacing.css";
-@import "~tachyons/src/_font-weight.css";
-@import "~tachyons/src/_text-align.css";
-@import "~tachyons/src/_type-scale.css";
-
+@import "~tachyons/css/tachyons.min.css";
 
 body {
   margin: 0;
@@ -34,6 +29,10 @@ code {
   --orange: #b48c3f;
 }
 
+input {
+  box-sizing: content-box !important;
+}
+
 .bg-blue {
   background-color: var(--blue);
 }
@@ -42,10 +41,34 @@ code {
   background-color: var(--light-blue);
 }
 
+.bg-orange {
+  background-color: var(--orange);
+}
+
 .text-light {
   color: var(--light-text);
 }
 
 .text-dark {
-  color: var(--)
+  color: var(--dark-text);
+}
+
+.bg-green {
+  background-color: var(--green) !important;
+}
+
+.bg-light-green {
+  background-color: var(--light-green) !important;
+}
+
+.bg-red {
+  background-color: var(--red) !important;
+}
+
+.bg-light-red {
+  background-color: var(--light-red) !important;
+}
+
+.bg-orange {
+  background-color: var(--orange) !important;
 }

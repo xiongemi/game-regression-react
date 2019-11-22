@@ -27,6 +27,7 @@ const theme = createMuiTheme({
 
 const Dashboard = React.lazy(() => import('./dashboard/dashboard-container'));
 const Profile = React.lazy(() => import('./profile/ProfileRouter'));
+const Games = React.lazy(() => import('./games/games-container'));
 
 export class App extends React.Component {
   render(): React.ReactNode {
@@ -38,16 +39,19 @@ export class App extends React.Component {
               <HeaderContainer />
               <MenuContainer />
 
-              <Switch>
-                <Route exact path="/" component={Dashboard} />
-                <Route path={Routes.profile} component={Profile} />
-                <Route path={Routes.dashboard}>
-                  <Redirect to="/" />
-                </Route>
-                <Route path="*">
-                  <Redirect to="/" />
-                </Route>
-              </Switch>
+              <div className="mh0 mh5-m mh6-l">
+                <Switch>
+                  <Route exact path="/" component={Dashboard} />
+                  <Route path={Routes.profile} component={Profile} />
+                  <Route path={Routes.games} component={Games} />
+                  <Route path={Routes.dashboard}>
+                    <Redirect to="/" />
+                  </Route>
+                  <Route path="*">
+                    <Redirect to="/" />
+                  </Route>
+                </Switch>
+              </div>
             </ThemeProvider>
           </BrowserRouter>
         </Provider>

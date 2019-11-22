@@ -3,16 +3,16 @@ import { createSelector } from 'reselect';
 
 import { RootState } from '../root-state.interface';
 import { ApiStatus } from '../../types/api-status.enum';
-import { getProfile } from '../../profile/store/profile.selectors';
-import { Profile } from '../../profile/types/profile.interface';
+import { getProfile } from '../profile/profile.selectors';
+import { Profile } from '../profile/types/profile.interface';
 
-import { GameState } from './types/game-state.interface';
+import { GamesState } from './types/games-state.interface';
 import { Game } from './types/game.interface';
 
-export const getGameState: Selector<RootState, GameState> = (state: RootState) => state.game;
+export const getGamesState: Selector<RootState, GamesState> = (state: RootState) => state.games;
 
 export const getGames: Selector<RootState, Game[]> = (state: RootState) =>
-  getGameState(state).games;
+  getGamesState(state).games;
 
 export const getUncompletedGames: Selector<RootState, Game[]> = createSelector(
   getGames,
@@ -47,7 +47,7 @@ export const getCompletedGamesProgress: Selector<RootState, number> = createSele
 );
 
 export const getFetchGamesApiStatus: Selector<RootState, ApiStatus> = (state: RootState) =>
-  getGameState(state).fetchStatus;
+  getGamesState(state).fetchStatus;
 
 export const isFetchGamesLoading: Selector<RootState, boolean> = createSelector(
   getFetchGamesApiStatus,

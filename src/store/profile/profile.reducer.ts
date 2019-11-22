@@ -1,8 +1,8 @@
 import { AnyAction, combineReducers } from 'redux';
 
-import { Profile } from '../types/profile.interface';
 import { ApiStatus } from '../../types/api-status.enum';
 
+import { Profile } from './types/profile.interface';
 import {
   EDIT_PROFILE,
   EDIT_PROFILE_FAILED,

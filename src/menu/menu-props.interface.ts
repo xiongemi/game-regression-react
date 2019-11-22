@@ -1,8 +1,4 @@
-import * as H from 'history';
-import { match } from 'react-router';
+import { RouteComponentProps } from 'react-router';
+import { WithTranslation } from 'react-i18next';
 
-export interface MenuProps {
-  history: H.History;
-  location: H.Location;
-  match: match;
-}
+export type MenuProps = RouteComponentProps & WithTranslation;

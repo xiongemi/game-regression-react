@@ -1,6 +1,6 @@
 import * as H from 'history';
 
-import { Profile } from '../types/profile.interface';
+import { Profile } from '../../store/profile/types/profile.interface';
 
 export interface ProfileEditProps {
   profile: Profile | null;

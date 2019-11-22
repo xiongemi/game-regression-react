@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
 
-import { Profile } from '../types/profile.interface';
+import { Profile } from './types/profile.interface';
 
 export const FETCH_PROFILE = 'FETCH_PROFILE';
 export const FETCH_PROFILE_SUCCESS = 'FETCH_PROFILE_SUCCESS';

@@ -1,8 +1,8 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchProfile } from '../profile/store/profile.actions';
-import { getProfile } from '../profile/store/profile.selectors';
+import { fetchProfile } from '../store/profile/profile.actions';
+import { getProfile } from '../store/profile/profile.selectors';
 import { RootState } from '../store/root-state.interface';
 
 import { Header } from './Header';

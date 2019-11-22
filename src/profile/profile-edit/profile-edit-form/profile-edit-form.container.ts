@@ -3,7 +3,7 @@ import { equals } from 'ramda';
 
 import { cleanUpJson } from '../../../shared/clean-up-json.util';
 import { ProfileEditProps } from '../profile-edit-props.interface';
-import { Profile } from '../../types/profile.interface';
+import { Profile } from '../../../store/profile/types/profile.interface';
 import { Routes } from '../../../types/routes.enum';
 
 import { ProfileEditForm } from './ProfileEditForm';

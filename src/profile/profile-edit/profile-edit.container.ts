@@ -6,10 +6,10 @@ import {
   hasEditProfileFailed,
   isEditProfilePending,
   isEditProfileSaved,
-} from '../store/profile.selectors';
+} from '../../store/profile/profile.selectors';
 import { RootState } from '../../store/root-state.interface';
-import { editProfile, resetEditProfileStatus } from '../store/profile.actions';
-import { Profile } from '../types/profile.interface';
+import { editProfile, resetEditProfileStatus } from '../../store/profile/profile.actions';
+import { Profile } from '../../store/profile/types/profile.interface';
 
 import { ProfileEdit } from './ProfileEdit';
 

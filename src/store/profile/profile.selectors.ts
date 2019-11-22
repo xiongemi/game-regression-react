@@ -1,16 +1,22 @@
 import { Selector } from 'react-redux';
 import { createSelector } from 'reselect';
 
-import { ProfileState } from '../types/profile-state.interface';
 import { RootState } from '../../store/root-state.interface';
-import { Profile } from '../types/profile.interface';
 import { ApiStatus } from '../../types/api-status.enum';
+
+import { ProfileState } from './types/profile-state.interface';
+import { Profile } from './types/profile.interface';
 
 export const getProfileState: Selector<RootState, ProfileState> = (state: RootState) =>
   state.profile;
 
 export const getProfile: Selector<RootState, Profile | null> = (state: RootState) =>
   getProfileState(state).profile;
+
+export const getAverageNumberOfHoursPerDay: Selector<RootState, number> = (state: RootState) => {
+  const profile = getProfile(state);
+  return profile ? profile.averageNumberOfHoursPerDay : 0;
+};
 
 export const getEditProfileApiStatus: Selector<RootState, ApiStatus> = (state: RootState) =>
   getProfileState(state).editStatus;

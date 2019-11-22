@@ -10,8 +10,8 @@ import {
   getUncompletedGamesCount,
   getUncompletedGamesProgress,
   isFetchGamesLoading,
-} from '../store/game/game.selectors';
-import { fetchGames } from '../store/game/game.actions';
+} from '../store/games/games.selectors';
+import { fetchGames } from '../store/games/games.actions';
 
 import { Dashboard } from './Dashboard';
 

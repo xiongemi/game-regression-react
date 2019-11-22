@@ -4,11 +4,9 @@ This project is an example project for learning React.
 
 It is inspired by https://github.com/rangle/game-progression.
 
-## To Start
+To run locally: `yarn install && yarn start`.
 
-- Create your own React project in GitHub using [Create React App](https://github.com/facebook/create-react-app)
-- Copy db.json and the profile image in the src/assets folder over to your project
-- Implement user stories from https://github.com/rangle/game-progression/tree/master/docs/user-stories.
+Steps I took to create this project: [steps.md](./steps.md) .
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

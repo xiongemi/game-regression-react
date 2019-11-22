@@ -4,7 +4,11 @@ Previously, I did a blog post about learning React in [https://medium.com/better
 
 Now I want to use things I learned to create a React app. I don't want to create a simple to-do app, so I choose to create a game-progression app inspired by https://github.com/rangle/game-progression, but using React.
 
-Here are the steps I went through to create this app.
+This document is about the steps I went through to create this app. It does not mean it is the only approach to solve this problems. 
+
+## Some Lessons Learnt
+- `tachyons` and `material-ui` does not work well with each others. In this project, I have to use nasty `!important` to apply some css styles.
+In the future, I would definitely change the css strategies.
 
 ## Setup Backend
 

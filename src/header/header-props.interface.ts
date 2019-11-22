@@ -1,4 +1,4 @@
-import { Profile } from '../profile/types/profile.interface';
+import { Profile } from '../store/profile/types/profile.interface';
 
 export interface HeaderProps {
   profile: Profile | null;

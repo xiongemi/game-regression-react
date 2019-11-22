@@ -1,4 +1,4 @@
-import { ApiStatus } from '../../types/api-status.enum';
+import { ApiStatus } from '../../../types/api-status.enum';
 
 import { Profile } from './profile.interface';
 
