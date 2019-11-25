@@ -49,7 +49,7 @@ export const getCompletedGamesProgress: Selector<RootState, number> = createSele
 export const getFetchGamesApiStatus: Selector<RootState, ApiStatus> = (state: RootState) =>
   getGamesState(state).fetchStatus;
 
-export const isFetchGamesLoading: Selector<RootState, boolean> = createSelector(
+export const isGamesFetchPending: Selector<RootState, boolean> = createSelector(
   getFetchGamesApiStatus,
   (apiStatus: ApiStatus) => apiStatus === ApiStatus.pending,
 );
@@ -67,3 +67,7 @@ export const getNumberOfDaysRemaining: Selector<RootState, number> = createSelec
     );
   },
 );
+
+export const getGameById = (state: RootState) => (id: number): Game | undefined => {
+  return getGames(state).find(game => game.id === id);
+};

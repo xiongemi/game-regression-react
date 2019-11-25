@@ -11,7 +11,7 @@ export class ProfileView extends React.Component<ProfileViewProps> {
   render(): React.ReactNode {
     return this.props.profile ? (
       <React.Fragment>
-        <Paper className="ma3 pa3 flex justify-between" elevation={3}>
+        <Paper className="ma3 pa3 flex justify-between bg-blue text-light" elevation={3}>
           <Typography variant="h6">{this.props.t('myProfile')}</Typography>
           <Button
             variant="contained"
@@ -22,7 +22,7 @@ export class ProfileView extends React.Component<ProfileViewProps> {
           </Button>
         </Paper>
 
-        <Paper className="ma3 pa3" elevation={3}>
+        <Paper className="ma3 pa3 bg-blue text-light" elevation={3}>
           <div className="b">{this.props.t('name')}:</div>
           <Typography variant="body1">
             {this.props.profile.firstName} {this.props.profile.lastName}

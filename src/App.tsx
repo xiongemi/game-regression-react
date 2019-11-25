@@ -27,7 +27,7 @@ const theme = createMuiTheme({
 
 const Dashboard = React.lazy(() => import('./dashboard/dashboard-container'));
 const Profile = React.lazy(() => import('./profile/ProfileRouter'));
-const Games = React.lazy(() => import('./games/games-container'));
+const Games = React.lazy(() => import('./games/GameRouter'));
 
 export class App extends React.Component {
   render(): React.ReactNode {

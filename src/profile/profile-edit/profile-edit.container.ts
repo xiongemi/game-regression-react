@@ -29,4 +29,4 @@ function mapDispatchToProps(dispatch: Dispatch) {
   };
 }
 
-export const ConnectedProfileEdit: any = connect(mapStateToProps, mapDispatchToProps)(ProfileEdit);
+export const ProfileEditContainer: any = connect(mapStateToProps, mapDispatchToProps)(ProfileEdit);

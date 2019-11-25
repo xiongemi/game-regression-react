@@ -7,6 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--light-blue);
 }
 
 code {
@@ -34,23 +35,23 @@ input {
 }
 
 .bg-blue {
-  background-color: var(--blue);
+  background-color: var(--blue) !important;
 }
 
 .bg-light-blue {
-  background-color: var(--light-blue);
+  background-color: var(--light-blue) !important;
 }
 
 .bg-orange {
-  background-color: var(--orange);
+  background-color: var(--orange) !important;
 }
 
 .text-light {
-  color: var(--light-text);
+  color: var(--light-text) !important;
 }
 
 .text-dark {
-  color: var(--dark-text);
+  color: var(--dark-text) !important;
 }
 
 .bg-green {

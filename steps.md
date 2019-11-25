@@ -7,7 +7,7 @@ Now I want to use things I learned to create a React app. I don't want to create
 This document is about the steps I went through to create this app. It does not mean it is the only approach to solve this problems. 
 
 ## Some Lessons Learnt
-- `tachyons` and `material-ui` does not work well with each others. In this project, I have to use nasty `!important` to apply some css styles.
+- `tachyons` and `material-ui` do work well together. In this project, I have to use nasty `!important` to apply some css styles.
 In the future, I would definitely change the css strategies.
 
 ## Setup Backend
@@ -57,8 +57,8 @@ So in the App.tsx, the routing looks like:
 
 In `ProfileRouter` component, this routing looks like:
 ```
-<Route exact path={this.props.match.path} component={ConnectedProfile} />
-<Route path={`${this.props.match.path}/edit`} component={ConnectedProfileEdit} />
+<Route exact path={this.props.match.path} component={ProfileViewContainer} />
+<Route path={`${this.props.match.path}/edit`} component={ProfileEditContainer} />
 ```
 
 ### Redirect
@@ -71,3 +71,15 @@ There is a requirement that dashboard and unknown routes should go to `/`, so in
   <Redirect to="/" />
 </Route>
 ```
+
+### Determine What is Current Location
+There is as requirement to highlight a menu button if the user is on that page.
+To achieve this, I found this example: [https://reacttraining.com/react-router/web/example/custom-link](https://reacttraining.com/react-router/web/example/custom-link).
+
+However, I am using class styled component, I could not use hooks. So I use a HOC approach that uses [withRouter](https://reacttraining.com/react-router/web/api/withRouter), so in the code, I did something similar to:
+```
+export const MenuContainer = withRouter(Menu);
+```
+This will add `RouteComponentProps` (`{ match, location, history }`) to `this.props` in `Menu` component.
+
+So in the `Menu`, I have access to `location` to determine the current url location.

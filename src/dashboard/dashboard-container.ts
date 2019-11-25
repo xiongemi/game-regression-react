@@ -9,7 +9,7 @@ import {
   getNumberOfDaysRemaining,
   getUncompletedGamesCount,
   getUncompletedGamesProgress,
-  isFetchGamesLoading,
+  isGamesFetchPending,
 } from '../store/games/games.selectors';
 import { fetchGames } from '../store/games/games.actions';
 
@@ -21,7 +21,7 @@ function mapStateToProps(state: RootState) {
     completeGamesProgress: getCompletedGamesProgress(state),
     uncompletedGamesCount: getUncompletedGamesCount(state),
     completeGamesCount: getCompletedGamesCount(state),
-    isPending: isFetchGamesLoading(state),
+    isPending: isGamesFetchPending(state),
     numberOfDaysRemaining: getNumberOfDaysRemaining(state),
   };
 }

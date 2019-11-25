@@ -19,7 +19,7 @@ export class Menu extends React.Component<MenuProps, MenuState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      value: Routes.home,
+      value: this.getRoutesFromPathname(),
     };
   }
 
@@ -29,12 +29,16 @@ export class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   componentDidUpdate(preProps: MenuProps) {
-    if (this.props.match.path !== preProps.match.path) {
-      if ([Routes.home, Routes.games].includes(this.props.match.path as Routes)) {
-        this.setState({ value: this.props.match.path });
-      } else {
-        this.setState({ value: '' });
-      }
+    if (this.props.location.pathname !== preProps.location.pathname) {
+      this.setState({ value: this.getRoutesFromPathname() });
+    }
+  }
+
+  private getRoutesFromPathname() {
+    if ([Routes.home, Routes.games].includes(this.props.location.pathname as Routes)) {
+      return this.props.location.pathname;
+    } else {
+      return Routes.home;
     }
   }
 
@@ -55,7 +59,7 @@ export class Menu extends React.Component<MenuProps, MenuState> {
         <Tab
           value={Routes.games}
           label={this.props.t('games')}
-          {...a11yProps('two')}
+          {...a11yProps('games')}
           classes={{ selected: 'bg-menu' }}
         />
         <Tab value="" disabled />

@@ -55,7 +55,7 @@ export class ProfileEditForm extends React.Component<
         {t => (
           <React.Fragment>
             <form onSubmit={this.props.handleSubmit}>
-              <Paper className="ma3 pa3 flex justify-between" elevation={3}>
+              <Paper className="ma3 pa3 flex justify-between bg-blue text-light" elevation={3}>
                 <Typography variant="h6">{t('editMyProfile')}</Typography>
                 <div>
                   <Button

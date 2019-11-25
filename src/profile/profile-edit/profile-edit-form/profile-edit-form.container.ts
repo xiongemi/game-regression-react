@@ -1,5 +1,5 @@
 import { withFormik } from 'formik';
-import { equals } from 'ramda';
+import { isEqual } from 'lodash-es';
 
 import { cleanUpJson } from '../../../shared/clean-up-json.util';
 import { ProfileEditProps } from '../profile-edit-props.interface';
@@ -54,7 +54,7 @@ export const ProfileEditFormik = withFormik({
       languageId: props.profile && props.profile.languageId,
     } as Profile;
 
-    if (equals(profile, props.profile)) {
+    if (isEqual(profile, props.profile)) {
       props.history.push(Routes.profile);
       setSubmitting(false);
     } else {
