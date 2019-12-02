@@ -2,6 +2,7 @@ import { WithTranslation } from 'react-i18next';
 import { RouteComponentProps } from 'react-router-dom';
 
 import { Game } from '../../store/games/types/game.interface';
+import { Platform } from '../../store/platforms/types/platform.interface';
 
 export interface GameEditPropsInterface
   extends WithTranslation,
@@ -10,5 +11,8 @@ export interface GameEditPropsInterface
   fetchPlatforms: () => void;
   getPlatformNameById: (id: number) => string;
   getGameById: (id: number) => Game | undefined;
+  updateGame: (game: Game) => void;
+  goBackToGames: any;
   isPending: boolean;
+  platforms: Platform[];
 }

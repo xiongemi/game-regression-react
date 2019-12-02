@@ -1,5 +1,6 @@
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { withTranslation } from 'react-i18next';
 
 import {
   getProfile,
@@ -29,4 +30,6 @@ function mapDispatchToProps(dispatch: Dispatch) {
   };
 }
 
-export const ProfileEditContainer: any = connect(mapStateToProps, mapDispatchToProps)(ProfileEdit);
+export const ProfileEditContainer = withTranslation()(
+  connect(mapStateToProps, mapDispatchToProps)(ProfileEdit),
+);

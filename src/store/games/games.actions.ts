@@ -4,6 +4,10 @@ export const FETCH_GAMES = 'FETCH_GAMES';
 export const FETCH_GAMES_SUCCESS = 'FETCH_GAMES_SUCCESS';
 export const FETCH_GAMES_FAILED = 'FETCH_GAMES_FAILED';
 
+export const UPDATE_GAME = 'UPDATE_GAME';
+export const UPDATE_GAME_SUCCESS = 'UPDATE_GAME_SUCCESS';
+export const UPDATE_GAME_FAILED = 'UPDATE_GAME_FAILED';
+
 export function fetchGames() {
   return { type: FETCH_GAMES };
 }
@@ -14,4 +18,16 @@ export function fetchGamesSuccess(games: Game[]) {
 
 export function fetchGamesFailed(error: any) {
   return { type: FETCH_GAMES_FAILED, error };
+}
+
+export function updateGame(game: Game) {
+  return { type: UPDATE_GAME, game };
+}
+
+export function updateGameSuccess(game: Game) {
+  return { type: UPDATE_GAME_SUCCESS, game };
+}
+
+export function updateGameFailed(error: any) {
+  return { type: UPDATE_GAME_FAILED, error };
 }

@@ -35,10 +35,12 @@ export class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   private getRoutesFromPathname() {
-    if ([Routes.home, Routes.games].includes(this.props.location.pathname as Routes)) {
-      return this.props.location.pathname;
-    } else {
+    if (this.props.location.pathname.includes(Routes.games)) {
+      return Routes.games;
+    } else if (this.props.location.pathname === Routes.home) {
       return Routes.home;
+    } else {
+      return '';
     }
   }
 

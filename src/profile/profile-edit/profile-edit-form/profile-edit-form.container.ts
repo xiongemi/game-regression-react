@@ -1,27 +1,14 @@
 import { withFormik } from 'formik';
+import * as Yup from 'yup';
 import { isEqual } from 'lodash-es';
 
-import { cleanUpJson } from '../../../shared/clean-up-json.util';
 import { ProfileEditProps } from '../profile-edit-props.interface';
 import { Profile } from '../../../store/profile/types/profile.interface';
 import { Routes } from '../../../types/routes.enum';
+import { FormsErrors } from '../../../shared/form-errors.enum';
 
 import { ProfileEditForm } from './ProfileEditForm';
 import { ProfileEditFormValues } from './profile-edit-form-values.interface';
-
-function nameValidation(name: string): null | string {
-  return name ? (name.match(/^[A-Z]+$/i) ? null : 'alphabetError') : 'requiredError';
-}
-
-function hoursValidation(hours: number): null | string {
-  if (!hours && hours !== 0) {
-    return 'requiredError';
-  }
-  if (hours < 0) {
-    return 'greaterThan0Error';
-  }
-  return null;
-}
 
 export const ProfileEditFormik = withFormik({
   mapPropsToValues: (props: ProfileEditProps): ProfileEditFormValues => {
@@ -33,15 +20,20 @@ export const ProfileEditFormik = withFormik({
     };
   },
 
-  validate: (values: ProfileEditFormValues) => {
-    const errors = cleanUpJson({
-      firstName: nameValidation(values.firstName),
-      lastName: nameValidation(values.lastName),
-      imageUrl: values.imageUrl ? null : 'requiredError',
-      averageHoursPerDay: hoursValidation(values.averageHoursPerDay),
+  validationSchema: () => {
+    return Yup.object().shape({
+      firstName: Yup.string()
+        .required(FormsErrors.requiredError)
+        .matches(/^[A-Z]+$/i, FormsErrors.alphabetError),
+      lastName: Yup.string()
+        .required(FormsErrors.requiredError)
+        .matches(/^[A-Z]+$/i, FormsErrors.alphabetError),
+      imageUrl: Yup.string().required(FormsErrors.requiredError),
+      averageHoursPerDay: Yup.number()
+        .required()
+        .moreThan(0, FormsErrors.greaterThanMinError)
+        .max(10, FormsErrors.lessThanMaxError),
     });
-
-    return errors;
   },
 
   handleSubmit: (values, { props, setSubmitting }) => {
@@ -55,11 +47,11 @@ export const ProfileEditFormik = withFormik({
     } as Profile;
 
     if (isEqual(profile, props.profile)) {
-      props.history.push(Routes.profile);
       setSubmitting(false);
+      props.history.push(Routes.profile);
     } else {
-      props.editProfile(profile);
       setSubmitting(true);
+      props.editProfile(profile);
     }
   },
 

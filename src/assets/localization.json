@@ -4,7 +4,10 @@
       "title": "Game Regression",
       "alphabetError": "Only alphabet characters",
       "requiredError": "Field is required",
-      "greaterThan0Error": "Must be a number >= 0",
+      "greaterOrEqualToMinError": "Must be a number >= {{ min }}",
+      "greaterThanMinError": "Must be a number > {{ min }}",
+      "lessOrEqualToMaxError": "Mast be a number <= {{ max }}",
+      "lessThanMaxError": "Mast be a number < {{ max }}",
       "editProfileFailed": "Failed to edit profile, please try again.",
       "firstName": "First Name",
       "lastName": "Last Name",
@@ -22,7 +25,17 @@
       "games": "Games",
       "gamesOwned": "Games Owned",
       "estCompleted": "Est. % Completed",
-      "completionDate": "Completion Date"
+      "completionDate": "Completion Date",
+      "editGame": "Edit Game",
+      "save": "Save",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "imageUrl": "Image Url",
+      "platform": "Platform",
+      "numberOfHoursToComplete": "Number of Hours to Complete",
+      "priority": "Priority",
+      "hoursPlayed": "Hours Played",
+      "complete": "Complete"
     }
   }
 }
