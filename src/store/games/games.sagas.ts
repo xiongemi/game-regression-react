@@ -4,6 +4,9 @@ import { AnyAction } from 'redux';
 import { ApiUrls } from '../../types/api-urls.const';
 
 import {
+  DELETE_GAME,
+  deleteGameFailed,
+  deleteGameSuccess,
   FETCH_GAMES,
   fetchGamesFailed,
   fetchGamesSuccess,
@@ -12,15 +15,6 @@ import {
   updateGameSuccess,
 } from './games.actions';
 import { getGames } from './games.selectors';
-
-function* fetchGames() {
-  const games = yield select(getGames);
-  if (games.length) {
-    yield put(fetchGamesSuccess(games));
-    return;
-  }
-  yield fetchGamesForcedRefresh();
-}
 
 function* fetchGamesForcedRefresh() {
   try {
@@ -32,6 +26,15 @@ function* fetchGamesForcedRefresh() {
   } catch (error) {
     yield put(fetchGamesFailed(error));
   }
+}
+
+function* fetchGames() {
+  const games = yield select(getGames);
+  if (games.length) {
+    yield put(fetchGamesSuccess(games));
+    return;
+  }
+  yield fetchGamesForcedRefresh();
 }
 
 function* updateGame(action: AnyAction) {
@@ -51,7 +54,20 @@ function* updateGame(action: AnyAction) {
   }
 }
 
+function* deleteGame(action: AnyAction) {
+  try {
+    yield call(fetch, `${ApiUrls.games}/${action.game.id}`, {
+      method: 'DELETE',
+    });
+    yield put(deleteGameSuccess());
+    yield fetchGamesForcedRefresh();
+  } catch (error) {
+    yield put(deleteGameFailed(error));
+  }
+}
+
 export function* gamesSagas() {
   yield takeLatest(FETCH_GAMES, fetchGames);
   yield takeLatest(UPDATE_GAME, updateGame);
+  yield takeLatest(DELETE_GAME, deleteGame);
 }

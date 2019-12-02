@@ -10,7 +10,7 @@ import {
   isGameUpdated,
   isUpdateGamePending,
 } from '../../store/games/games.selectors';
-import { fetchGames, updateGame } from '../../store/games/games.actions';
+import { deleteGame, fetchGames, updateGame } from '../../store/games/games.actions';
 import { fetchPlatforms } from '../../store/platforms/platforms.actions';
 import {
   getPlatformNameById,
@@ -39,6 +39,7 @@ function mapDispatchToProps(dispatch: Dispatch) {
     fetchPlatforms: () => dispatch(fetchPlatforms()),
     updateGame: (game: Game) => dispatch(updateGame(game)),
     goBackToGames: () => dispatch(routerActions.push(Routes.games)),
+    deleteGame: (game: Game) => dispatch(deleteGame(game)),
   };
 }
 

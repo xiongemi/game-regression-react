@@ -10,7 +10,8 @@ export interface GameEditProps extends WithTranslation, RouteComponentProps<{ id
   getPlatformNameById: (id: number) => string;
   getGameById: (id: number) => Game | undefined;
   updateGame: (game: Game) => void;
-  goBackToGames: any;
+  deleteGame: (game: Game) => void;
+  goBackToGames: () => void;
   isFetchPending: boolean;
   isUpdatePending: boolean;
   isGameUpdated: boolean;

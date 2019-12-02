@@ -27,6 +27,10 @@ export class GameEditForm extends React.Component<GameEditFormProps & FormikProp
     }
   }
 
+  deleteGame() {
+    this.props.deleteGame(this.props.game);
+  }
+
   render(): React.ReactNode {
     return (
       <form onSubmit={this.props.handleSubmit}>
@@ -43,9 +47,10 @@ export class GameEditForm extends React.Component<GameEditFormProps & FormikProp
               {this.props.isUpdatePending && <CircularProgress size={20} />}
             </Button>
             <Button
-              type="submit"
+              type="button"
               variant="contained"
               color="secondary"
+              onClick={this.deleteGame.bind(this)}
               component={createRouterLinkForward(Routes.games)}
               disabled={this.props.isUpdatePending}
             >
