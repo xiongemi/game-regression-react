@@ -3,7 +3,14 @@ import { AnyAction, combineReducers } from 'redux';
 import { ApiStatus } from '../../types/api-status.enum';
 
 import { Game } from './types/game.interface';
-import { FETCH_GAMES, FETCH_GAMES_FAILED, FETCH_GAMES_SUCCESS } from './games.actions';
+import {
+  FETCH_GAMES,
+  FETCH_GAMES_FAILED,
+  FETCH_GAMES_SUCCESS,
+  UPDATE_GAME,
+  UPDATE_GAME_FAILED,
+  UPDATE_GAME_SUCCESS,
+} from './games.actions';
 
 function games(state: Game[] = [], action: AnyAction): Game[] {
   switch (action.type) {
@@ -27,7 +34,21 @@ function fetchStatus(state: ApiStatus = ApiStatus.notStarted, action: AnyAction)
   }
 }
 
+function updateStatus(state: ApiStatus = ApiStatus.notStarted, action: AnyAction): ApiStatus {
+  switch (action.type) {
+    case UPDATE_GAME:
+      return ApiStatus.pending;
+    case UPDATE_GAME_SUCCESS:
+      return ApiStatus.complete;
+    case UPDATE_GAME_FAILED:
+      return ApiStatus.error;
+    default:
+      return state;
+  }
+}
+
 export const gamesReducer = combineReducers({
   games,
   fetchStatus,
+  updateStatus,
 });

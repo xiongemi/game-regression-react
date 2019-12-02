@@ -21,6 +21,12 @@ import { Game } from '../../../store/games/types/game.interface';
 import { GameEditFormProps } from './game-edit-form-props.interface';
 
 export class GameEditForm extends React.Component<GameEditFormProps & FormikProps<Game>> {
+  componentDidUpdate(prevProps: GameEditFormProps & FormikProps<Game>) {
+    if (this.props.isGameUpdated && !prevProps.isGameUpdated) {
+      this.props.goBackToGames();
+    }
+  }
+
   render(): React.ReactNode {
     return (
       <form onSubmit={this.props.handleSubmit}>
@@ -31,17 +37,17 @@ export class GameEditForm extends React.Component<GameEditFormProps & FormikProp
               type="submit"
               color="primary"
               variant="contained"
-              disabled={this.props.isPending}
+              disabled={this.props.isUpdatePending}
             >
               {this.props.t('save')}
-              {this.props.isPending && <CircularProgress size={20} />}
+              {this.props.isUpdatePending && <CircularProgress size={20} />}
             </Button>
             <Button
               type="submit"
               variant="contained"
               color="secondary"
-              component={createRouterLinkForward(Routes.profile)}
-              disabled={this.props.isPending}
+              component={createRouterLinkForward(Routes.games)}
+              disabled={this.props.isUpdatePending}
             >
               {this.props.t('delete')}
             </Button>
@@ -49,8 +55,8 @@ export class GameEditForm extends React.Component<GameEditFormProps & FormikProp
               type="button"
               variant="contained"
               color="secondary"
-              component={createRouterLinkForward(Routes.profile)}
-              disabled={this.props.isPending}
+              component={createRouterLinkForward(Routes.games)}
+              disabled={this.props.isUpdatePending}
             >
               {this.props.t('cancel')}
             </Button>

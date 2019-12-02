@@ -4,11 +4,11 @@ import { isEqual } from 'lodash-es';
 import { CenteredCircularProgress } from '../../shared/CenteredCircularProgress';
 import { Routes } from '../../types/routes.enum';
 
-import { GameEditPropsInterface } from './game-edit-props.interface';
+import { GameEditProps } from './game-edit.props';
 import { GameEditState } from './game-edit-state.interface';
 import { GameEditFormik } from './game-edit-form/game-edit-form.container';
 
-export class GameEdit extends React.Component<GameEditPropsInterface, GameEditState> {
+export class GameEdit extends React.Component<GameEditProps, GameEditState> {
   constructor(props: any) {
     super(props);
     this.state = { game: undefined };
@@ -20,7 +20,7 @@ export class GameEdit extends React.Component<GameEditPropsInterface, GameEditSt
   }
 
   componentDidUpdate(): void {
-    if (!this.props.isPending && !this.state.game) {
+    if (!this.props.isFetchPending && !this.state.game) {
       const id = parseInt(this.props.match.params.id);
       if (isNaN(id)) {
         this.props.history.push(Routes.games);
@@ -37,14 +37,7 @@ export class GameEdit extends React.Component<GameEditPropsInterface, GameEditSt
     return !this.state.game ? (
       <CenteredCircularProgress />
     ) : (
-      <GameEditFormik
-        game={this.state.game}
-        platforms={this.props.platforms}
-        t={this.props.t}
-        isPending={this.props.isPending}
-        updateGame={this.props.updateGame}
-        goBackToGames={this.props.goBackToGames}
-      />
+      <GameEditFormik game={this.state.game} {...this.props} />
     );
   }
 }

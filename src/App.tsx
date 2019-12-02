@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import { Provider } from 'react-redux';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { ConnectedRouter } from 'connected-react-router';
 
 import { CenteredCircularProgress } from './shared/CenteredCircularProgress';
 import { HeaderContainer } from './header/header.container';
@@ -10,7 +11,6 @@ import { rootStore, history } from './store/root-store';
 import { Routes } from './types/routes.enum';
 
 import './i18n';
-import { ConnectedRouter } from 'connected-react-router';
 
 const theme = createMuiTheme({
   palette: {

@@ -5,4 +5,5 @@ import { Game } from './game.interface';
 export interface GamesState {
   games: Game[];
   fetchStatus: ApiStatus;
+  updateStatus: ApiStatus;
 }

@@ -4,7 +4,12 @@ import { Dispatch } from 'redux';
 import { routerActions } from 'connected-react-router';
 
 import { RootState } from '../../store/root-state.interface';
-import { getGameById, isGamesFetchPending } from '../../store/games/games.selectors';
+import {
+  getGameById,
+  isGamesFetchPending,
+  isGameUpdated,
+  isUpdateGamePending,
+} from '../../store/games/games.selectors';
 import { fetchGames, updateGame } from '../../store/games/games.actions';
 import { fetchPlatforms } from '../../store/platforms/platforms.actions';
 import {
@@ -13,13 +18,15 @@ import {
   isPlatformFetchPending,
 } from '../../store/platforms/platforms.selectors';
 import { Game } from '../../store/games/types/game.interface';
+import { Routes } from '../../types/routes.enum';
 
 import { GameEdit } from './GameEdit';
-import { Routes } from '../../types/routes.enum';
 
 function mapStateToProps(state: RootState) {
   return {
-    isPending: isPlatformFetchPending(state) || isGamesFetchPending(state),
+    isFetchPending: isPlatformFetchPending(state) || isGamesFetchPending(state),
+    isUpdatePending: isUpdateGamePending(state),
+    isGameUpdated: isGameUpdated(state),
     getPlatformNameById: getPlatformNameById(state),
     getGameById: getGameById(state),
     platforms: getPlatforms(state),
@@ -31,7 +38,7 @@ function mapDispatchToProps(dispatch: Dispatch) {
     fetchGames: () => dispatch(fetchGames()),
     fetchPlatforms: () => dispatch(fetchPlatforms()),
     updateGame: (game: Game) => dispatch(updateGame(game)),
-    goBackToGames: () => dispatch(routerActions.push(Routes.games))
+    goBackToGames: () => dispatch(routerActions.push(Routes.games)),
   };
 }
 

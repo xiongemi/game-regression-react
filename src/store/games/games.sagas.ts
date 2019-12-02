@@ -14,16 +14,20 @@ import {
 import { getGames } from './games.selectors';
 
 function* fetchGames() {
+  const games = yield select(getGames);
+  if (games.length) {
+    yield put(fetchGamesSuccess(games));
+    return;
+  }
+  yield fetchGamesForcedRefresh();
+}
+
+function* fetchGamesForcedRefresh() {
   try {
-    let games = yield select(getGames);
-    if (games.length) {
-      yield put(fetchGamesSuccess(games));
-      return;
-    }
     const response = yield call(fetch, ApiUrls.games, {
       method: 'GET',
     });
-    games = yield response.json();
+    const games = yield response.json();
     yield put(fetchGamesSuccess(games));
   } catch (error) {
     yield put(fetchGamesFailed(error));
@@ -41,6 +45,7 @@ function* updateGame(action: AnyAction) {
     });
     const game = yield response.json();
     yield put(updateGameSuccess(game));
+    yield fetchGamesForcedRefresh();
   } catch (error) {
     yield put(updateGameFailed(error));
   }

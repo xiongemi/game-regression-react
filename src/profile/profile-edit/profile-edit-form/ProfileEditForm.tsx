@@ -22,7 +22,6 @@ export class ProfileEditForm extends React.Component<
   componentDidUpdate(prevProps: ProfileEditProps & FormikProps<ProfileEditFormValues>) {
     if (this.props.isSaved && !prevProps.isSaved) {
       this.props.history.push(Routes.profile);
-      return;
     }
   }
 

@@ -54,6 +54,19 @@ export const isGamesFetchPending: Selector<RootState, boolean> = createSelector(
   (apiStatus: ApiStatus) => apiStatus === ApiStatus.pending,
 );
 
+export const getUpdateGamesApiStatus: Selector<RootState, ApiStatus> = (state: RootState) =>
+  getGamesState(state).updateStatus;
+
+export const isUpdateGamePending: Selector<RootState, boolean> = createSelector(
+  getUpdateGamesApiStatus,
+  (apiStatus: ApiStatus) => apiStatus === ApiStatus.pending,
+);
+
+export const isGameUpdated: Selector<RootState, boolean> = createSelector(
+  getUpdateGamesApiStatus,
+  (apiStatus: ApiStatus) => apiStatus === ApiStatus.complete,
+);
+
 export const getNumberOfDaysRemaining: Selector<RootState, number> = createSelector(
   getUncompletedGames,
   getProfile,
